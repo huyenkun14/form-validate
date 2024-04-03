@@ -1,0 +1,46 @@
+/* register form */
+.register-form > h1 {
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.register-form > p {
+    margin-bottom: 50px;
+}
+
+.register-form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.register-form-item {
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.register-form-input {
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 0.8px;
+}
+
+.register-form-input input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.register-params {
+    margin: 20px 0;
+}
+
+#register-form-button {
+    margin-top: 30px;
+    padding: 10px 50px;
+    background-color: gray;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
