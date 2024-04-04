@@ -140,17 +140,17 @@ const FormikValidation: React.FC<{}> = () => {
             <button id="register-form-button" type='submit'>
               Next
             </button>
-            <div className="theme" style={{ marginTop: '20px' }}>
-              <button
-                onClick={() => { handleToggleTheme('light') }}
-              >light</button>
-              <button
-                onClick={() => { handleToggleTheme('dark') }}
-              >dark</button>
-            </div>
           </Form>
         )}
       </Formik>
+      <div className="theme" style={{ marginTop: '20px' }}>
+        <button
+          onClick={() => { handleToggleTheme('light') }}
+        >light</button>
+        <button
+          onClick={() => { handleToggleTheme('dark') }}
+        >dark</button>
+      </div>
     </div>
   )
 }
