@@ -1,5 +1,5 @@
 // ** React Imports
-import React from 'react'
+import React, { useContext } from 'react'
 
 // ** Styles Imports
 import './form.css'
@@ -7,6 +7,8 @@ import './form.css'
 // ** Third party Imports
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import AuthContext from '../context/ThemeProvider';
+import { ThemeContext } from '../context/ThemeProvider';
 
 interface IAccount {
   firstName: string
@@ -29,16 +31,23 @@ const FormikValidation: React.FC<{}> = () => {
     checked: false,
   }
 
+  // state
+  const { handleChangeTheme, themeMode, defaultColors } = useContext(ThemeContext)
+
+  const handleToggleTheme = (theme: string) => {
+    handleChangeTheme(theme)
+  }
+
   const SignupSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
     lastName: Yup.string().required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string().min(8, 'Tối thiểu 8 kí tự!').matches(/[!@#$%^&*]/,'Phải có kí tự đặc biệt!').required('Required'),
+    password: Yup.string().min(8, 'Tối thiểu 8 kí tự!').matches(/[!@#$%^&*]/, 'Phải có kí tự đặc biệt!').required('Required'),
     rePassword: Yup.string().required('Required').oneOf([Yup.ref('password')], 'Mật khẩu nhập lại không trùng khớp!'),
   });
 
   return (
-    <div className="register-form">
+    <div className="register-form" style={defaultColors}>
       <h1>Create your account <span style={{ fontSize: '14px' }}>Formik</span></h1>
       <p>Fill the form below to create an account.</p>
       <Formik
@@ -131,6 +140,14 @@ const FormikValidation: React.FC<{}> = () => {
             <button id="register-form-button" type='submit'>
               Next
             </button>
+            <div className="theme" style={{ marginTop: '20px' }}>
+              <button
+                onClick={() => { handleToggleTheme('light') }}
+              >light</button>
+              <button
+                onClick={() => { handleToggleTheme('dark') }}
+              >dark</button>
+            </div>
           </Form>
         )}
       </Formik>

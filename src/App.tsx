@@ -1,9 +1,15 @@
-import React from 'react';
+
 import Register from './pages/Register';
+import ThemeProvider from './context/ThemeProvider';
 
 function App() {
+
   return (
-    <Register />
+    <ThemeProvider>
+      <div className="app">
+        <Register />
+      </div>
+    </ThemeProvider>
   );
 }
 
